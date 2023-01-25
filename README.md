@@ -1,6 +1,8 @@
 # software-install
 Menu for automated installation of software and settings on Cinnamon Desktop
 
+Purpose: Only for Ubuntu server (22.04 tested) and installation of the Cinnamon Desktop
+
 This menu is made for my personal use in order to restore my Cinnamon Desktop installation like I prefer.
 
 - It resolves known issues with sound on Ubuntu and with the network applet of Cinnamon that's on it.
