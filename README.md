@@ -21,4 +21,14 @@ Since I only use Nvidia drivers on my computer, I just did add the version I per
 I also added an option to check for updates and upgrades automatically in combination with what needs to be done.
 Same thing for a reboot option in the problem-solver.sh - because the sound fix requires a reboot to apply.
 
+Usage:
+---
 
+`git clone https://github.com/wingarmac/software-install.git`
+
+From inside the dowloaded folder, run a terminal and enter:
+
+`~/software-install/setup-options$ sudo sh Installer-menu.sh`
+
+
+  
