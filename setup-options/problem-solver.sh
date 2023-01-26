@@ -10,7 +10,8 @@ show_menu(){
     printf "\n${menu}*********************************************${normal}\n"
     printf "${menu}**${number} 1)${menu} Network applet problem ${normal}\n"
     printf "${menu}**${number} 2)${menu} Sound problem ${normal}\n"
-    printf "${menu}**${number} 3)${menu} Reboot ${normal}\n"
+    printf "${menu}**${number} 3)${menu} Mint Software & Update Center APT issue ${normal}\n"
+    printf "${menu}**${number} 4)${menu} Reboot ${normal}\n"
     printf "${menu}*********************************************${normal}\n"
     printf "Please enter a menu option and enter or ${fgred}x to exit. ${normal}"
     read opt
@@ -50,6 +51,13 @@ while [ $opt != '' ]
         ;;
         3) clear;
             option_picked "Option 3 Picked";
+            sudo touch /etc/apt/preferences.d/official-package-repositories.pref;
+	    sudo cp ~/setup-options/official-package-repositories.pref /etc/apt/preferences.d/official-package-repositories.pref;
+	    sudo apt install mintinstall mintupdate -y;
+	    show_menu;
+        ;;
+        4) clear;
+            option_picked "Option 4 Picked";
             reboot;
 	    show_menu;
         ;;
