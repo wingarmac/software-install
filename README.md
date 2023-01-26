@@ -30,7 +30,9 @@ Usage:
 
 From inside the dowloaded folder, run a terminal and enter:
 
-`~/software-install/setup-options$ sudo sh Installer-menu.sh`
+`~/software-install/setup-options$ chmod a+x Installer-menu.sh`
+
+`~/software-install/setup-options$ ./Installer-menu.sh`
 
 
   
