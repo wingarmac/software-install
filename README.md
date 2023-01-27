@@ -13,7 +13,8 @@ This menu is made for my personal use in order to restore my Cinnamon Desktop in
 
 - It makes it easy to add the Mint backports for Cinnamon install on Ubuntu
 - It let you select the proprietary driver to install for graphics
-Since I only use Nvidia drivers on my computer, I just did add the version I personally need.
+
+  Since I only use Nvidia drivers on my computer, I just did add the version I personally need.
 
 - It has an option to update the Ubuntu kernel to its last release
 - It has a menu to install additional software from a text-list and also 3th party software I like/use that uses deb packages to be installed.
