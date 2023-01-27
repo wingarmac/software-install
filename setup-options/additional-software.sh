@@ -8,7 +8,7 @@ show_menu(){
     printf "\n${menu}*********************************************${normal}\n"
     printf "\n${menu}*             ${fgred}Software Menu              ${menu}*${normal}\n"
     printf "\n${menu}*********************************************${normal}\n"
-    printf "${menu}**${number} 1)${menu} Install software list ${normal}\n"
+    printf "${menu}**${number} 1)${menu} Package install menu ${normal}\n"
     printf "${menu}**${number} 2)${menu} Install Google Chrome ${normal}\n"
     printf "${menu}**${number} 3)${menu} Install Unified Remote ${normal}\n"
     printf "${menu}**${number} 4)${menu} Install Wine ${normal}\n"
@@ -35,7 +35,7 @@ while [ $opt != '' ]
       case $opt in
         1) clear;
             option_picked "Option 1 Picked";
-            for pkg in `cat installation.txt`; do sudo apt-get install -y $pkg; done;
+            sudo sh packages.sh;
             show_menu;
         ;;
         2) clear;
