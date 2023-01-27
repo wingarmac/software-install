@@ -3,7 +3,7 @@ show_menu(){
     normal=`echo "\033[m"`
     menu=`echo "\033[36m"` #Blue
     number=`echo "\033[33m"` #yellow
-    bgred=`echo "\033[41m"`
+#    bgred=`echo "\033[41m"`
     fgred=`echo "\033[31m"`
     printf "\n${menu}*********************************************${normal}\n"
     printf "\n${menu}*             ${fgred}Software Menu              ${menu}*${normal}\n"
@@ -18,7 +18,7 @@ show_menu(){
 option_picked(){
     msgcolor=`echo "\033[01;31m"` # bold red
     normal=`echo "\033[00;00m"` # normal white
-    message=${@:-"${normal}Error: No message passed"}
+    message=${*:-"${normal}Error: No message passed"}
     printf "${msgcolor}${message}${normal}\n"
 }
 
@@ -37,12 +37,12 @@ while [ $opt != '' ]
         ;;
         2) clear;
             option_picked "Option 2 Picked";
-            exit;
+            awk -F'll ' '
+  /apt install/ && !/nvidia/ && !/--/ && !/-f/{ print $2 }
+' /var/log/apt/history.log >installation.txt;
 	    show_menu;
         ;;
         x)exit;
-        ;;
-        \n)exit;
         ;;
         *)clear;
             option_picked "Pick an option from the menu";
