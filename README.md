@@ -26,7 +26,7 @@ Usage:
 
 `git clone https://github.com/wingarmac/software-install.git`
 
-From inside the download folder, run a terminal and enter:
+From inside the target folder, run a terminal and enter:
 
 `~/software-install/setup-options$ chmod a+x Installer-menu.sh`
 
