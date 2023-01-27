@@ -107,6 +107,21 @@ I need to remove all text that is not a package inside the output file, to restr
 
 For point 3, I wonder if marking a package will make the system request a purge of the package already installed?
 
+export apt install packages options: 
+
+awk -F'll ' '
+  /apt install/ && !/nvidia/ && !/--/ && !/-f/{ print $2 }
+' /var/log/apt/history.log >installation.txt
+
+
+sed -e '/^Commandline: apt install /!d' -e 's///' \
+    -e '/nvidia/d' -e '/--/d' -e '/-f/d' \
+    </var/log/apt/history.log >installation.txt
+    
+  
+How to add in sh script is the next step?
+
+
   [1]: https://github.com/wingarmac/software-install/blob/main/setup-options/additional-software.sh
   [2]: https://wiki.winehq.org/Ubuntu
   [3]: https://www.ubuntuupdates.org/ppa/mint_main
