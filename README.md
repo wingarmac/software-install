@@ -19,7 +19,7 @@ This menu is made for my personal use in order to restore my Cinnamon Desktop in
 - It has an option to update the Ubuntu kernel to its last release
 - It has a menu to install additional software from a text-list and also 3th party software I like to use that uses deb packages to be installed.
 
-I also added an option to check for updates and upgrades automatically in combination with what needs to be done and for a reboot option in the problem-solver.sh as a requirement for the sound fix in Ubuntu.
+I also added an option to check for updates and upgrades automatically in the Installer menu (Installer-menu.sh) and a reboot option in the Ubuntu Cinnamon issues menu (problem-solver.sh) as a requirement for the sound fix in Ubuntu.
 
 Usage:
 ---
