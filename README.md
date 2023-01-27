@@ -17,7 +17,7 @@ This menu is made for my personal use in order to restore my Cinnamon Desktop in
   Since I only use Nvidia drivers on my computer, I just did add the version I personally need.
 
 - It has an option to update the Ubuntu kernel to its last release
-- It has a menu to install additional software from a text-list and also 3th party software I like/use that uses deb packages to be installed.
+- It has a menu to install additional software from a text-list and also 3th party software I like to use that uses deb packages to be installed.
 
 I also added an option to check for updates and upgrades automatically in combination with what needs to be done.
 Same thing for a reboot option in the problem-solver.sh - because the sound fix requires a reboot to apply.
