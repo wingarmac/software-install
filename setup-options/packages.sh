@@ -6,7 +6,7 @@ show_menu(){
 #    bgred=`echo "\033[41m"`
     fgred=`echo "\033[31m"`
     printf "\n${menu}*********************************************${normal}\n"
-    printf "\n${menu}*             ${fgred}Software Menu              ${menu}*${normal}\n"
+    printf "\n${menu}*         ${fgred}Package install  menu         ${menu}*${normal}\n"
     printf "\n${menu}*********************************************${normal}\n"
     printf "${menu}**${number} 1)${menu} Install software list ${normal}\n"
     printf "${menu}**${number} 2)${menu} Export software list ${normal}\n"
