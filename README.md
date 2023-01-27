@@ -7,11 +7,9 @@ This menu is made for my personal use in order to restore my Cinnamon Desktop in
 
 - It resolves known issues with sound on Ubuntu and with the network applet of Cinnamon that's on it.
 
-For more details about the network applet issue here:
-https://askubuntu.com/questions/1135755/network-manager-applet-shows-not-connected-and-one-unmanaged-wired-connection/1439162#1439162
+[For more details about the network applet issue here](https://askubuntu.com/questions/1135755/network-manager-applet-shows-not-connected-and-one-unmanaged-wired-connection/1439162#1439162)
 
-For more information about the trouble with sound on Ubuntu see this post:
-https://askubuntu.com/questions/1436904/problem-with-sound-in-ubuntu-22-10/1440458#1440458
+[For more information about the trouble with sound on Ubuntu see this post](https://askubuntu.com/questions/1436904/problem-with-sound-in-ubuntu-22-10/1440458#1440458)
 
 - It makes it easy to add the Mint backports for Cinnamon install on Ubuntu
 - It let you select the proprietary driver to install for graphics
