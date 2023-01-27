@@ -5,7 +5,7 @@ Purpose: Only for Ubuntu server (22.04 tested) and installation of the Cinnamon 
 
 This menu is made for my personal use in order to restore my Cinnamon Desktop installation like I prefer.
 
-- It resolves known issues with sound on Ubuntu and with the network applet of Cinnamon that's on it.
+- It resolves known issues with sound on Ubuntu and the Cinnamon network applet.
 
 [For more details about the network applet issue here](https://askubuntu.com/questions/1135755/network-manager-applet-shows-not-connected-and-one-unmanaged-wired-connection/1439162#1439162)
 
