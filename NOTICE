@@ -1,0 +1,112 @@
+I'm working on a script in sh for reinstallation purposes of my desktop environment with exactly the same packages I currently use.
+
+**First problem:**
+
+This is the command I use to reinstall the packages on a clean install for now ([file on Github][1]).
+
+"**Install software list**" option actually in my script:
+
+    for pkg in `cat installation.txt`; do sudo apt-get install -y $pkg; done;
+
+I would like to optimize it by adding an option to export "**Export software list**" with a better package list, containing only the required elements to reinstall it the way it was before.
+
+I tried the command `apt-mark showmanual` to create the installation.txt file, but ...
+
+ - The problem here is that **it should not contain the dependent packages** that are installed with each. It should only contain the master packages. 
+
+ - This search **should also exclude packages from 3th party sources** like
+   Chrome or Webmin. Since those are installed with `wget` and `dpkg -i`
+   commands in my case.
+ - It **should also exclude package from sources that aren't from official Ubuntu repos**/additional PPA sources. 
+
+    I tried to apply like suggested by @user535733 :
+
+    `wget -O - http://releases.ubuntu.com/releases/jammy/ubuntu-22.04.1-live-server-amd64.manifest | awk '{print $1}' > manifest`
+
+    This output shows a list of the default packages installed of the release I use.
+
+    `apt-mark showmanual > listmanual`
+
+    `comm -2 -3 listmanual manifest`
+
+    Output a list containing also libraries and other dependency packages. It also gives these messages:
+    
+    `comm: file 2 is not in sorted order`
+
+    `comm: input is not in sorted order`
+
+ - It should also exclude de graphic driver/other proprietary drivers
+
+**Second problem:**
+
+I would like to create a marked package list to prevent the installation of software I do not use. Like vim, vlc or libre-office* since `--no-install-recommends` also  prevents the installation of packages I want to be installed.
+
+I found this could be done with `sudo apt-mark hold <VARIABLE>`
+
+So I would like to export a list that contains all software that has been purged until now and mark them before reinstallation. I probably will have to purge some instead of marking since these are installed with the system installation of Ubuntu server, like Vim. Since I use nano (in terminal) and gedit (in GUI).
+
+This should prevent the installation of packages I had to purge after installation of my desktop environment.
+
+
+**To resume, I need to export 3 variables:**
+ 1. List of packages I need to reinstall 
+    
+    **Without libraries and other dependencies - Without unofficial sources - Without proprietary drivers** > Needs to be exported to installation.txt
+ 2. List of packages I need to mark to prevent their installation
+ 3. List of packages I need to purge after the base system installation
+
+    **Examples for point 2 and 3: <hr/>in my specific case** : Libre-office*, Firefox, Byobu, Vim, ...<hr/>For packages installed with Ubuntu server > I need to export to purge.txt<hr/>For those I do not want to be installed with the Cinnamon Desktop environment > I need to export to mark.txt
+
+Related information sources:
+ - https://askubuntu.com/questions/17823/how-to-list-all-installed-packages?
+ - https://askubuntu.com/questions/18654/how-to-prevent-updating-of-a-specific-package
+
+I recently found a way to get a list with only packages installed with `apt install` and removed manually  with "apt purge":
+
+`cat /var/log/apt/history.log | grep "apt install"`
+
+    Commandline: apt install aptitude
+    Commandline: apt install slick-greeter muffin cinnamon
+    Commandline: apt install nvidia-driver-525
+    Commandline: apt install gnome-terminal gnome-system-tools gnome-disk-utility gparted gnome-system-monitor psensor
+    Commandline: apt install -f
+    Commandline: apt install fonts-symbola
+    Commandline: apt install yaru-theme-icon
+    Commandline: apt install --install-recommends winehq-devel
+    Commandline: apt install subversion
+    Commandline: apt install -f
+    Commandline: apt install gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0 gnome-system-monitor
+    Commandline: apt install sysstat
+    Commandline: apt install ntpdate
+    Commandline: apt install easy-rsa
+    Commandline: apt install gnome-shell-extension-manager
+    Commandline: apt install mintinstall
+    Commandline: apt install mintupdate
+    Commandline: apt install --reinstall mintsources
+
+Some lines contain unwanted data to export. Like `apt install -f` and `apt install --reinstall mintsources` shouldn't be exported.
+
+At top of that, I should also filter the packages that aren't on Ubuntu sources (like [wine-devel][2], [mintinstall and mintupdate][3]) and proprietary drivers (like the Nvidia driver or on some of my installations my Brother printer driver). The rest of the output seems good to me. 
+
+`cat /var/log/apt/history.log | grep purge`
+
+    Commandline: apt-get purge -y lxd-installer
+    Commandline: apt purge ubuntu-session
+    Commandline: apt purge gnome-calc*
+    Commandline: apt purge subversion
+    Commandline: apt purge byobu
+    Commandline: apt purge vim
+
+I only use `apt`, not `apt-get` to install packages. In opposite, the system uses allways `apt-get` like I can see in /var/log/apt/history.log
+
+This makes it more convenient for me. So, instead of searching for `purge`, I should use `apt purge`, to restrict the search to what I've entered.
+
+Even for the apt install output, I've no libraries, no dependencies, no deb packages from other sources. I think I'm near a solution, if it isn't for proprietary drivers I've also installed with `apt install`.
+
+I need to remove all text that is not a package inside the output file, to restrict it to a package list.
+
+For point 3, I wonder if marking a package will make the system request a purge of the package already installed?
+
+  [1]: https://github.com/wingarmac/software-install/blob/main/setup-options/additional-software.sh
+  [2]: https://wiki.winehq.org/Ubuntu
+  [3]: https://www.ubuntuupdates.org/ppa/mint_main
