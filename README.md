@@ -17,7 +17,7 @@ https://askubuntu.com/questions/1436904/problem-with-sound-in-ubuntu-22-10/14404
 - It let you select the proprietary driver to install for graphics
 Since I only use Nvidia drivers on my computer, I just did add the version I personally need.
 
-- It has an option to update the Ubuntu kernel to it's last release
+- It has an option to update the Ubuntu kernel to its last release
 - It has a menu to install additional software from a text-list and also 3th party software I like/use that uses deb packages to be installed.
 
 I also added an option to check for updates and upgrades automatically in combination with what needs to be done.
@@ -28,11 +28,8 @@ Usage:
 
 `git clone https://github.com/wingarmac/software-install.git`
 
-From inside the dowloaded folder, run a terminal and enter:
+From inside the download folder, run a terminal and enter:
 
 `~/software-install/setup-options$ chmod a+x Installer-menu.sh`
 
 `~/software-install/setup-options$ ./Installer-menu.sh`
-
-
-  
