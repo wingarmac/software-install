@@ -11,3 +11,10 @@ easy-rsa
 gnome-shell-extension-manager
 mintinstall
 mintupdate
+dialog
+webmin
+certbot
+python3-certbot-apache
+bind9
+dnsutils
+dbus-x11
